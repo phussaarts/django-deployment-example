@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-static-top navbar-expand-lg navbar-light bg-light">
+{#        <div class="container">#}
+            <a href="{% url 'index' %}" class="navbar-brand">HOME</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link">Admin</a></li>
+                <li class="nav-item"><a href="{% url 'basic_app:register' %}" class="nav-link">Register</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="{% url 'basic_app:user_login' %}" class="nav-link">Login</a></li>
+                {% endif %}
+            </ul>
+{#        </div>#}
+    </nav>
+
+
+    {% block body_block %}
+    {% endblock %}
+</div>
+</body>
+</html>
